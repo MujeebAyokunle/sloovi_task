@@ -14,11 +14,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { ApiLogedCall } from '../../apiCall'
 
 
-function RegisteredTasks({ tasks, users }) {
+function RegisteredTasks({ users }) {
 
     const [editTask, setEditTask] = useState(false)
 
     const token = useSelector((state) => state.payload.token)
+    const tasks = useSelector((state) => state.payload.tasks)
     const companyId = useSelector((state) => state.payload.companyId)
 
     const dispatch = useDispatch()
@@ -95,7 +96,7 @@ function RegisteredTasks({ tasks, users }) {
 
                     <>
                         {
-                            !editTask ? (
+                            !task.visibility ? (
                                 <div key={`${task.id + i} `} className='container1' >
                                     <div className='usercontainer'>
                                         <img src={task.assigned_user_icon} style={{ height: 55, width: 55, borderRadius: 5 }} />
@@ -108,7 +109,7 @@ function RegisteredTasks({ tasks, users }) {
 
                                     <div className='features' >
                                         {
-                                             display ? (
+                                            !task.snooze ? (
                                                 <p onClick={() => {
                                                     setDescription(task.task_msg)
                                                     setUserDate(task.task_date)
@@ -121,18 +122,34 @@ function RegisteredTasks({ tasks, users }) {
                                                     let time = `${hours}:${minutes}`
 
                                                     setUserTime(time)
-                                                    setEditTask(!editTask)
+                                                    let task2 = {
+                                                        ...tasks[i],
+                                                        visibility: true
+                                                    }
+
+                                                    dispatch(updateTasks(task2))
+                                                    console.log(tasks[i])
+
+                                                    // setEditTask(!editTask)
                                                 }}>
                                                     <Tooltip title="Edit this Task" arrow>
                                                         <BsPencilFill style={{ color: 'black' }} />
                                                     </Tooltip>
                                                 </p>
-                                             ) : (
-                                                <p style={{border: 'none'}}></p>
-                                             )
+                                            ) : (
+                                                <p style={{ border: 'none' }}></p>
+                                            )
                                         }
 
-                                        <p onClick={() => setDisplay(!display)} >
+                                        <p onClick={() => {
+                                            setDisplay(!display)
+                                            let task2 = {
+                                                ...tasks[i],
+                                                snooze : '' || undefined ? true : !tasks[i]['snooze']
+                                            }                                                    
+                                            
+                                            dispatch(updateTasks(task2))
+                                        }} >
                                             <Tooltip title="Snooze this Task to appear in your Inbox at a later date" arrow>
                                                 <TbBellZ style={{ color: 'black' }} />
                                             </Tooltip>
@@ -216,7 +233,15 @@ function RegisteredTasks({ tasks, users }) {
                                             </div>
                                             <div>
                                                 <button
-                                                    onClick={() => setEditTask(!editTask)}
+                                                    onClick={() => {
+                                                        setEditTask(!editTask)
+                                                        let task2 = {
+                                                            ...tasks[i],
+                                                            visibility: false
+                                                        }
+
+                                                        dispatch(updateTasks(task2))
+                                                    }}
                                                     style={{ backgroundColor: 'rgba(0,0,0,0)', border: 'none', color: '#939CAD', padding: '2.5px 15px' }} >Cancel</button>
                                                 <button
                                                     onClick={() => updateTask(task)}
