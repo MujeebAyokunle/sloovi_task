@@ -107,8 +107,8 @@ function RegisteredTasks({ tasks, users }) {
                                     </div>
 
                                     <div className='features' >
-                                        {/* { */}
-                                            {/* // display && ( */}
+                                        {
+                                             display ? (
                                                 <p onClick={() => {
                                                     setDescription(task.task_msg)
                                                     setUserDate(task.task_date)
@@ -127,8 +127,10 @@ function RegisteredTasks({ tasks, users }) {
                                                         <BsPencilFill style={{ color: 'black' }} />
                                                     </Tooltip>
                                                 </p>
-                                            {/* // ) */}
-                                        {/* // } */}
+                                             ) : (
+                                                <p style={{border: 'none'}}></p>
+                                             )
+                                        }
 
                                         <p onClick={() => setDisplay(!display)} >
                                             <Tooltip title="Snooze this Task to appear in your Inbox at a later date" arrow>
