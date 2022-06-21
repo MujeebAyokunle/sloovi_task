@@ -128,9 +128,7 @@ function RegisteredTasks({ users }) {
                                                     }
 
                                                     dispatch(updateTasks(task2))
-                                                    console.log(tasks[i])
-
-                                                    // setEditTask(!editTask)
+                                                    
                                                 }}>
                                                     <Tooltip title="Edit this Task" arrow>
                                                         <BsPencilFill style={{ color: 'black' }} />
