@@ -39,9 +39,9 @@ function RegisteredTasks({ users }) {
 
         let convertedTime = timeHour + timeMinute
 
-        let zone = Date().slice(Date().indexOf("T") + 1, Date().lastIndexOf("(")).slice(0, 3);
+        let zone = Date().slice(Date().indexOf("+") + 1, Date().lastIndexOf("(")).slice(0, 3) || Date().slice(Date().indexOf("-") + 1, Date().lastIndexOf("(")).slice(3);
         let hours = parseInt(zone) * 3600
-        let minutes = Date().slice(Date().indexOf("T") + 1, Date().lastIndexOf("(")).slice(3)
+        let minutes = Date().slice(Date().indexOf("+") + 1, Date().lastIndexOf("(")).slice(3) || Date().slice(Date().indexOf("-") + 1, Date().lastIndexOf("(")).slice(3)
         let convertedMinute = parseInt(minutes) * 60
         let time_zone = hours + convertedMinute
 
