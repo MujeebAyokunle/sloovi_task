@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sloovi_task/static/css/main.89d0726b.css",
+    "main.js": "/sloovi_task/static/js/main.27759ef6.js",
+    "static/js/787.b89586b6.chunk.js": "/sloovi_task/static/js/787.b89586b6.chunk.js",
+    "index.html": "/sloovi_task/index.html",
+    "main.89d0726b.css.map": "/sloovi_task/static/css/main.89d0726b.css.map",
+    "main.27759ef6.js.map": "/sloovi_task/static/js/main.27759ef6.js.map",
+    "787.b89586b6.chunk.js.map": "/sloovi_task/static/js/787.b89586b6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89d0726b.css",
+    "static/js/main.27759ef6.js"
+  ]
+}
