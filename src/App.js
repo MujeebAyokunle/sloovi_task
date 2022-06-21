@@ -19,7 +19,7 @@ function App() {
     }
 
     ApiLoginCall('https://stage.api.sloovi.com/login', 'POST', data, (result) => {
-      
+      console.log(result)
       dispatch(setToken(result.results.token))
       dispatch(setCompanyId(result.results.company_id))
       

@@ -32,12 +32,13 @@ const Task = ({ users }) => {
 
         let convertedTime = timeHour + timeMinute
 
-        let zone = Date().slice(Date().indexOf("T") + 1, Date().lastIndexOf("(")).slice(0, 3);
+        let zone = Date().slice(Date().indexOf("+") + 1, Date().lastIndexOf("(")).slice(0, 3) || Date().slice(Date().indexOf("-") + 1, Date().lastIndexOf("(")).slice(3);
         let hours = parseInt(zone) * 3600
-        let minutes = Date().slice(Date().indexOf("T") + 1, Date().lastIndexOf("(")).slice(3)
+        let minutes = Date().slice(Date().indexOf("+") + 1, Date().lastIndexOf("(")).slice(3) || Date().slice(Date().indexOf("-") + 1, Date().lastIndexOf("(")).slice(3)
         let convertedMinute = parseInt(minutes) * 60
         let time_zone = hours + convertedMinute
-
+        console.log(zone)
+        console.log(Date())
         let task = {
             task_msg: description,
             task_date: userDate,            
@@ -46,8 +47,9 @@ const Task = ({ users }) => {
             is_completed: 0,
             assigned_user: assignUser
         }
-
+        
         ApiLogedCall(`https://stage.api.sloovi.com/task/lead_465c14d0e99e4972b6b21ffecf3dd691?company_id=${companyId}`, "POST", task, token, (result) => {
+            console.log(result)
             if (result['status'] === 'success') {
                 
                 dispatch(setTask(result.results))
@@ -59,7 +61,7 @@ const Task = ({ users }) => {
             } else {
                 alert(result.message)
             }
-
+            
 
         })
 

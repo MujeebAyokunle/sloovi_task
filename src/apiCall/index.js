@@ -1,7 +1,7 @@
 
 const ApiLogedCall = (url, method, data, token, cb) => {        
     try {        
-
+        console.log(token)
         fetch(url, {            
             method : method,
             headers : {
@@ -23,7 +23,7 @@ const ApiLogedCall = (url, method, data, token, cb) => {
 
 const ApiLogedGetCall = (url, method, token, cb) => {        
     try {        
-
+        console.log(token)
         fetch(url, {            
             method : method,
             headers : {
