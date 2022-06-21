@@ -41,10 +41,12 @@ function App() {
     <div className="row App">
       <div className='row' style={{ height: '100vh' }}>
 
-        <div className='col-lg-2 col-md-2 col-sm-2 nomargin' style={{ height: '100%', backgroundColor: '#323E4D' }} >
+        <div className='col-lg-2 col-md-2 col-sm-2 nomargin'  >
+          <div style={{ height: '100%', backgroundColor: '#323E4D' }} >
 
+          </div>
         </div>
-        <div className='col-lg-10 col-md-10 col-sm-10 nomargin' style={{ backgroundColor: '#FAFAFA' }} >
+        <div className='col-lg-10 col-md-10 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 nomargin' style={{ backgroundColor: '#FAFAFA', position: 'relative' }} >
           <div className='topNav' >
 
           </div>
